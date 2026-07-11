@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { adminClient } from './_lib/supabase';
-import { preflight, cors, requireUser, ok, fail } from './_lib/auth';
+import { adminClient } from './lib/supabase';
+import { preflight, cors, requireUser, ok, fail } from './lib/auth';
 
 const mapEmp = (e: any) => ({ id: e.id, name: e.name, role: e.role, jobTitle: e.job_title||'', department: e.department||'', email: e.email||'', phone: e.phone||'', reportingManager: e.reporting_manager||'', status: e.status||'active', isActive: e.is_active!==false, joiningDate: e.joining_date||'', workLocation: e.work_location||'', address: e.address||'', avatar: e.avatar||'', maritalStatus: e.marital_status||'Single', created_by: e.created_by||'', branch: e.branch||'' });
 

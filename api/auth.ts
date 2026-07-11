@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { adminClient, anonClient } from './_lib/supabase';
-import { signToken, signRefresh, verifyNoExp } from './_lib/jwt';
-import { preflight, cors, requireUser, ok, fail } from './_lib/auth';
+import { adminClient, anonClient } from './lib/supabase';
+import { signToken, signRefresh, verifyNoExp } from './lib/jwt';
+import { preflight, cors, requireUser, ok, fail } from './lib/auth';
 
 export default async function(req: VercelRequest, res: VercelResponse) {
   if (preflight(req, res)) return;
