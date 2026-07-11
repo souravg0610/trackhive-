@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { adminClient } from './lib/supabase';
-import { preflight, cors, requireUser, ok, fail } from './lib/auth';
+import { adminClient } from '../src/lib/serverless/supabase';
+import { preflight, cors, requireUser, ok, fail } from '../src/lib/serverless/auth';
 const mapAtt = (a: any) => ({ id: a.id, employeeId: a.employee_id, employeeName: a.employee_name, department: a.department||'', date: a.date, checkInTime: a.check_in_time||'', checkOutTime: a.check_out_time||'', workingHours: a.working_hours||'', status: a.status||'Present', location: a.location||'' });
 export default async function(req: VercelRequest, res: VercelResponse) {
   if (preflight(req, res)) return; cors(res);

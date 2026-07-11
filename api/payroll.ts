@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { adminClient } from './lib/supabase';
-import { preflight, cors, requireUser, ok, fail } from './lib/auth';
+import { adminClient } from '../src/lib/serverless/supabase';
+import { preflight, cors, requireUser, ok, fail } from '../src/lib/serverless/auth';
 export default async function(req: VercelRequest, res: VercelResponse) {
   if (preflight(req, res)) return; cors(res);
   const user = requireUser(req, res); if (!user) return;
