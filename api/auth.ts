@@ -6,18 +6,27 @@ import { preflight, cors, requireUser, ok, fail } from './_lib/auth';
 export default async function(req: VercelRequest, res: VercelResponse) {
   if (preflight(req, res)) return;
   cors(res);
-  const url = new URL(req.url!, `http://${req.headers.host}`);
-  const action = url.searchParams.get('action') || url.pathname.split('/').pop();
 
-  if (req.method === 'GET') {
+  // Detect action from URL path
+  const path = req.url || '';
+  const isSignup       = path.includes('signup');
+  const isSignin       = path.includes('signin');
+  const isRefresh      = path.includes('refresh');
+  const isForgot       = path.includes('forgot');
+  const isMe           = path.includes('/me') || req.method === 'GET';
+
+  // GET /auth/me
+  if (isMe && req.method === 'GET') {
     const user = requireUser(req, res);
     if (!user) return;
     return res.status(200).json({ success: true, data: user, userId: user.sub, email: user.email, companyId: user.companyId, role: user.role, name: user.name });
   }
 
+  if (req.method !== 'POST') return fail(res, 'Method not allowed', 405);
+
   const body = req.body || {};
 
-  if (action === 'signup') {
+  if (isSignup) {
     try {
       const { email, password, fullName, companyName, phone, industry, companySize, address } = body;
       const sb = adminClient(); const emailLower = email.toLowerCase().trim();
@@ -37,7 +46,7 @@ export default async function(req: VercelRequest, res: VercelResponse) {
     } catch(e: any) { return fail(res, e.message); }
   }
 
-  if (action === 'signin') {
+  if (isSignin) {
     try {
       const { email, password } = body;
       const emailLower = email.toLowerCase().trim();
@@ -59,12 +68,14 @@ export default async function(req: VercelRequest, res: VercelResponse) {
     } catch(e: any) { return fail(res, e.message); }
   }
 
-  if (action === 'refresh') {
-    try { const d=verifyNoExp(body.refreshToken); return res.status(200).json({ success: true, token: signToken({sub:d.sub,email:d.email,companyId:d.companyId,role:d.role,name:d.name}) }); }
-    catch { return fail(res, 'Invalid refresh token', 401); }
+  if (isRefresh) {
+    try {
+      const d = verifyNoExp(body.refreshToken);
+      return res.status(200).json({ success: true, token: signToken({sub:d.sub,email:d.email,companyId:d.companyId,role:d.role,name:d.name}) });
+    } catch { return fail(res, 'Invalid refresh token', 401); }
   }
 
-  if (action === 'forgot-password') {
+  if (isForgot) {
     const { error: e } = await anonClient().auth.resetPasswordForEmail(body.email.toLowerCase().trim());
     if (e) return fail(res, e.message, 400);
     return res.status(200).json({ success: true, message: 'Password reset email sent' });
