@@ -1,0 +1,39 @@
+{
+  "functions": {
+    "api/**/*.ts": { "runtime": "@vercel/node@3.2.21" }
+  },
+  "rewrites": [
+    { "source": "/api/v1/auth/signup",             "destination": "/api/auth/signup" },
+    { "source": "/api/v1/auth/signin",             "destination": "/api/auth/signin" },
+    { "source": "/api/v1/auth/refresh",            "destination": "/api/auth/refresh" },
+    { "source": "/api/v1/auth/me",                 "destination": "/api/auth/me" },
+    { "source": "/api/v1/auth/forgot-password",    "destination": "/api/auth/forgot-password" },
+    { "source": "/api/v1/employees/bulk-import",   "destination": "/api/employees/bulk-import" },
+    { "source": "/api/v1/employees/:id/temp-password", "destination": "/api/employees/[id]" },
+    { "source": "/api/v1/employees/:id",           "destination": "/api/employees/[id]" },
+    { "source": "/api/v1/employees",               "destination": "/api/employees/index" },
+    { "source": "/api/v1/attendance/today",        "destination": "/api/attendance/today" },
+    { "source": "/api/v1/attendance/all",          "destination": "/api/attendance/all" },
+    { "source": "/api/v1/attendance/punch-in",     "destination": "/api/attendance/index" },
+    { "source": "/api/v1/attendance/punch-out",    "destination": "/api/attendance/index" },
+    { "source": "/api/v1/attendance",              "destination": "/api/attendance/index" },
+    { "source": "/api/v1/visits/:id",              "destination": "/api/visits/[id]" },
+    { "source": "/api/v1/visits",                  "destination": "/api/visits/index" },
+    { "source": "/api/v1/tasks/:id",               "destination": "/api/tasks/[id]" },
+    { "source": "/api/v1/tasks",                   "destination": "/api/tasks/index" },
+    { "source": "/api/v1/leaves/pending",          "destination": "/api/leaves/pending" },
+    { "source": "/api/v1/leaves/:id",              "destination": "/api/leaves/[id]" },
+    { "source": "/api/v1/leaves",                  "destination": "/api/leaves/index" },
+    { "source": "/api/v1/shifts/:id",              "destination": "/api/shifts/index" },
+    { "source": "/api/v1/shifts",                  "destination": "/api/shifts/index" },
+    { "source": "/api/v1/payroll/payslips",        "destination": "/api/payroll/payslips" },
+    { "source": "/api/v1/geofences/:id",           "destination": "/api/geofences/[id]" },
+    { "source": "/api/v1/geofences",               "destination": "/api/geofences/index" },
+    { "source": "/api/v1/notifications/:id",       "destination": "/api/notifications/[id]" },
+    { "source": "/api/v1/notifications",           "destination": "/api/notifications/index" },
+    { "source": "/api/v1/documents/:id",           "destination": "/api/documents/[id]" },
+    { "source": "/api/v1/documents",               "destination": "/api/documents/index" },
+    { "source": "/api/v1/companies/org-settings",  "destination": "/api/companies/org-settings" },
+    { "source": "/(.*)",                           "destination": "/index.html" }
+  ]
+}

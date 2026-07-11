@@ -1,0 +1,31 @@
+{
+  "name": "TrackHive Field Force ERP",
+  "short_name": "TrackHive",
+  "description": "Field workforce management — GPS tracking, attendance, tasks, visits, payroll.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#065f46",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%23065f46'/%3E%3Ccircle cx='96' cy='70' r='28' fill='none' stroke='%2310b981' stroke-width='8'/%3E%3Ccircle cx='96' cy='70' r='10' fill='%2310b981'/%3E%3Cellipse cx='96' cy='148' rx='48' ry='18' fill='none' stroke='%2310b981' stroke-width='7'/%3E%3Cline x1='96' y1='98' x2='96' y2='130' stroke='%2310b981' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='80' fill='%23065f46'/%3E%3Ccircle cx='256' cy='186' r='74' fill='none' stroke='%2310b981' stroke-width='20'/%3E%3Ccircle cx='256' cy='186' r='26' fill='%2310b981'/%3E%3Cellipse cx='256' cy='392' rx='128' ry='48' fill='none' stroke='%2310b981' stroke-width='18'/%3E%3Cline x1='256' y1='260' x2='256' y2='344' stroke='%2310b981' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    { "name": "Dashboard", "url": "/?tab=dashboard", "description": "View dashboard" },
+    { "name": "Attendance", "url": "/?tab=attendance", "description": "Clock in/out" },
+    { "name": "Tasks", "url": "/?tab=tasks", "description": "View tasks" }
+  ]
+}

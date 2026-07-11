@@ -1,0 +1,6 @@
+{
+  "name": "Trackhive",
+  "description": "Smart GPS workforce coordinates management SaaS. Manage field attendance logs, geofencing circular coordinates, and device routes isolation.",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
